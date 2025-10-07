@@ -24,4 +24,51 @@
       position: absolute;
       top: 0;
       left: 0;
-      wid
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 1;
+    }
+
+    .fallback {
+      position: absolute;
+      z-index: 0;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .fallback h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .fallback p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="fallback">
+    <h1>Presentation Failed to Load</h1>
+    <p>Please check your internet connection or reload the page.</p>
+  </div>
+
+  <iframe 
+    src="https://docs.google.com/presentation/d/e/2PACX-1vSbp7KXYXhbd0qFFwDGhItk9wNYF-YLAatYdeggxEZ_iAzQeeM1ST_aPswtBf78Pij5aTCgIqarC4Hu/pubembed?start=true&loop=true&delayms=5000"
+    frameborder="0"
+    allowfullscreen="true"
+    mozallowfullscreen="true"
+    webkitallowfullscreen="true"
+    onerror="document.querySelector('.fallback').style.zIndex = 2;">
+  </iframe>
+
+  <script>
+    // Hide fallback once iframe loads successfully
+    const iframe = document.querySelector('iframe');
+    iframe.addEventListener('load', () => {
+      document.querySelector('.fallback').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
